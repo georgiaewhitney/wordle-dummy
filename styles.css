@@ -1,6 +1,6 @@
 *, *::after, *::before {
   box-sizing: border-box;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 body {
@@ -35,4 +35,24 @@ body {
   border: .25em;
   cursor: pointer;
   user-select: none;
+}
+
+.key:hover, .key:focus {
+  background-color: #b2b2b2;
+}
+
+.key.large {
+  grid-column: span 3;
+}
+
+.key.incorrect {
+  background-color: #3c2a2a;
+}
+
+.key.incorrect-location {
+  background-color: #c7bd00;
+}
+
+.key.correct {
+  background-color: #149600;
 }
