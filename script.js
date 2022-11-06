@@ -34,17 +34,17 @@ const guessGrid = document.querySelector("[data-guess-grid]");
 // this allows us to start, so that we can also stop the game as win may occur before grid ends
 const startGame = () => {
   document.addEventListener("click", toClickMouse);
-  document.addEventListener("keydown", toPressKey);
+  document.addEventListener("keydown", toKeyPress);
 };
 
 const stopGame = () => {
   document.removeEventListener("click", toClickMouse);
-  document.removeEventListener("keydown", toPressKey);
+  document.removeEventListener("keydown", toKeyPress);
 };
 
 const toClickMouse = (x) => {
   if (x.target.matches("[data-key]")) {
-    pressKey(x.target.dataset.key);
+    keyPress(x.target.dataset.key);
     return;
   }
 
@@ -59,7 +59,7 @@ const toClickMouse = (x) => {
   }
 };
 
-const toPressKey = (x) => {
+const toKeyPress = (x) => {
   console.log(x);
   if (x.key === "Enter") {
     takeGuess();
@@ -72,13 +72,14 @@ const toPressKey = (x) => {
   }
 
   if (x.key.match(/^[a-z]$/)) {
-    pressKey(x.key);
+    keyPress(x.key);
     return;
   }
 };
 
-// this will find the first .tile that doesn't have a letter (data) and insert the letter (data) there
-// as querySelector always finds the first thing it matches
+// this is finding the first element in the grid that does not have any letter (data/element) inside
+// as querySelector always finds the first thing it matches, .tile will keep overriding the first tile
+// it allows us to letter through the grid while playing
 const keyPress = (key) => {
   const nextTile = guessGrid.querySelector(":not([data-letter])");
   nextTile.dataset.letter = key.toUpperCase(); // i think this is matching the dictionary
@@ -86,6 +87,9 @@ const keyPress = (key) => {
   nextTile.dataset.state = "active"; // gives the bg colour
 };
 
+
 startGame();
 
 // game was not responding because I hadn't logged the press to the console. It is now appearing
+// for some reason startGame() refuses to be called before.
+// it would help if i called my keyPress / keyPress function correctly
