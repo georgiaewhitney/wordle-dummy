@@ -43,23 +43,24 @@ const stopGame = () => {
 };
 
 const toClickMouse = (x) => {
-  if (x.target.matches("[data-key")) {
+  if (x.target.matches("[data-key]")) {
     pressKey(x.target.dataset.key);
     return;
   }
 
-  if (x.target.matches("[data-enter")) {
+  if (x.target.matches("[data-enter]")) {
     takeGuess();
     return;
   }
 
-  if (x.target.matches("[data=delete")) {
+  if (x.target.matches("[data=delete]")) {
     backspace();
     return;
   }
 };
 
 const toPressKey = (x) => {
+  console.log(x);
   if (x.key === "Enter") {
     takeGuess();
     return;
@@ -87,4 +88,4 @@ const keyPress = (key) => {
 
 startGame();
 
-// game is not responding to the keyboard - something is missing with the connection between the two
+// game was not responding because I hadn't logged the press to the console. It is now appearing
