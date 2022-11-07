@@ -88,6 +88,9 @@ const keyPress = (key) => {
 };
 
 
+
+
+// this function can't be called before initialisation? so it's starting the game here
 startGame();
 
 // game was not responding because I hadn't logged the press to the console. It is now appearing
