@@ -28,6 +28,17 @@ const wordList = [
   "ZONED",
 ];
 
+// function below will render the choice here
+// this doesn't randomise the answer with every call. only with start game 
+let answer = wordList[Math.floor(Math.random() * wordList.length)];
+
+// function to grab a word from the wordList at random
+/*
+const answer = () => {
+  let index = Math.floor(Math.random() * wordList.length);
+  return wordList[index];
+};
+*/
 // allows us to add keypress to the grid
 const guessGrid = document.querySelector("[data-guess-grid]");
 
@@ -108,8 +119,9 @@ const backspace = () => {
 };
 
 const takeGuess = () => {
+  const tilesInPlay = getTilesInPlay(); // need an array in order to .map() and .reduce()
+};
 
-}
 /////////////////////////////
 
 // this function can't be called before initialisation? so it's starting the game here
