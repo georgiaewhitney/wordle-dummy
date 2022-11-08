@@ -106,3 +106,7 @@ body {
   border-color: #828181;
   background-color: #149600;
 }
+
+.tile.colour {
+  background-color: red;
+}
